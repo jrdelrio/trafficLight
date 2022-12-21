@@ -1,34 +1,23 @@
 import React, { useState } from "react";
+import Light from "./light.jsx"
 
 const Home = () => {
 	
-	const [selectedColor, setSelected] = useState("");
+	const [selectedColor, setSelectedColor] = useState("");
+
+	const setSelectedFunction = (fut_col) => {
+		setSelectedColor(fut_col)
+	}
+
 	
 	return (
 		<div className="text-center">
 			<div className="tl-hanger"></div>
 				<div className="tl-body">
 
-					<div 
-					className={`light r-light + ${(selectedColor === 'red')    ? ' glow':''}`} 
-					onClick={() => {
-						(selectedColor === 'red') ? setSelected("") : setSelected('red');
-					}}>
-					</div>
-
-					<div 
-					className={`light y-light + ${(selectedColor === 'yellow') ? ' glow':''}`} 
-					onClick={() => {
-						(selectedColor === 'yellow') ? setSelected("") : setSelected('yellow');
-					}}>
-					</div>
-
-					<div 
-					className={`light g-light + ${(selectedColor === 'green')  ? ' glow':''}`} 
-					onClick={() => {
-						(selectedColor === 'green') ? setSelected("") : setSelected('green');
-					}}>
-					</div>
+					<Light color='red' class="r-light" var={selectedColor} setVar={setSelectedFunction} />
+					<Light color='yellow' class="y-light" var={selectedColor} setVar={setSelectedFunction} />
+					<Light color='green' class="g-light" var={selectedColor} setVar={setSelectedFunction} />
 
 			</div>
 		</div>
@@ -36,4 +25,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Home
